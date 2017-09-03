@@ -45,8 +45,9 @@ EXPOSE $port $live_reload_port
 WORKDIR $SRC_DIR
 
 COPY package.json .
+COPY yarn.lock .
 
-RUN npm install
+RUN yarn
 
 # Copy the rest of the source files
 COPY . .
