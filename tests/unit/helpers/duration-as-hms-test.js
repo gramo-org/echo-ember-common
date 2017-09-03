@@ -2,7 +2,7 @@
 import { durationAsHms } from 'echo-ember-common/helpers/duration-as-hms'
 import { module, test } from 'qunit'
 
-module('unit:duration-as-hms')
+module('Unit | Helpers | duration-as-hms')
 
 const secInOneHour = 3600
 const secInDay = secInOneHour * 24
