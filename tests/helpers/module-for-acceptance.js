@@ -1,23 +1,23 @@
-import { module } from 'qunit';
-import Ember from 'ember';
-import startApp from '../helpers/start-app';
-import destroyApp from '../helpers/destroy-app';
+import { module } from 'qunit'
+import Ember from 'ember'
+import startApp from '../helpers/start-app'
+import destroyApp from '../helpers/destroy-app'
 
-const { RSVP: { resolve } } = Ember;
+const { RSVP: { resolve } } = Ember
 
 export default function(name, options = {}) {
   module(name, {
-    beforeEach() {
-      this.application = startApp();
+    beforeEach(...args) {
+      this.application = startApp()
 
       if (options.beforeEach) {
-        return options.beforeEach.apply(this, arguments);
+        return options.beforeEach.apply(this, args)
       }
     },
 
-    afterEach() {
-      let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
-      return resolve(afterEach).then(() => destroyApp(this.application));
+    afterEach(...args) {
+      const afterEach = options.afterEach && options.afterEach.apply(this, args)
+      return resolve(afterEach).then(() => destroyApp(this.application))
     }
-  });
+  })
 }
