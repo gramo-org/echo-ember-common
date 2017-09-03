@@ -21,8 +21,16 @@ export function pathFor(...parts) {
 /**
  * Calculates full url for given path
  *
- * @param  {String} path  The path, like 'foo/bar/'
- * @return {String}       The URL, including host and namespace to API.
+ * @param  {String} path        The path, like 'foo/bar/'
+ * @param  {String} backendName The name of the backend you are building a url to
+ * @param  {Object} backends    An object containing backend information, like:
+ *                                 const backends = {
+ *                                   testBackend: {
+ *                                     host: 'http://example.com',
+ *                                     namespace: 'api'
+ *                                   }
+ *                                 }
+ * @return {String}             The URL, including host and namespace to API.
  */
 export function urlFor(path, backendName = 'echo', backends = {}) {
   const backend = backends[backendName]
@@ -32,7 +40,12 @@ export function urlFor(path, backendName = 'echo', backends = {}) {
 
 
 
-
+/**
+ * Makes a query string out of given object
+ *
+ * @param  {Object}     obj   The object to build query string of.
+ * @return {String}           A string encoded as a query string.
+ */
 export function toQueryString(obj) {
   const parts = []
 
