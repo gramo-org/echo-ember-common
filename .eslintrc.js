@@ -4,12 +4,12 @@ module.exports = {
     ecmaVersion: 2017,
     sourceType: 'module'
   },
-  extends: ["skalar"],
+  extends: ['skalar'],
   env: {
-    'browser': true
+    browser: true
   },
   rules: {
-    "no-invalid-this": "off",
-    "babel/no-invalid-this": "off"
+    'no-invalid-this': 'off',
+    'babel/no-invalid-this': 'off'
   }
 };
