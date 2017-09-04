@@ -1,5 +1,7 @@
 # echo-ember-common
 
+[ ![Codeship Status for gramo-org/echo-ember-common](https://app.codeship.com/projects/d2422460-72df-0135-c519-26ce1ff869ab/status?branch=master)](https://app.codeship.com/projects/243669)
+
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
