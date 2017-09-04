@@ -4,10 +4,12 @@ module.exports = {
     ecmaVersion: 2017,
     sourceType: 'module'
   },
-  extends: 'eslint:recommended',
+  extends: ['skalar'],
   env: {
     browser: true
   },
   rules: {
+    'no-invalid-this': 'off',
+    'babel/no-invalid-this': 'off'
   }
 };
