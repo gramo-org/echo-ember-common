@@ -11,10 +11,26 @@ export default Ember.Mixin.create({
   * It follows the convention of Ember error event handlers,
   * returning true IF the client of this method must handle
   * the error, and false if the error has been handled.
+  *
+  * @return {boolean}  True when you need to handle the error yourself.
+  *                    False when error is taken care of by this mixin.
   */
   handleHttpStatusError(error) {
-    // true: handle the error yourself, false: error handled for you
-    return !(this._handleConflictError(error) || this._handleServiceUnavailableError(error))
+    return !(
+      this._handleUnauthorizedError(error) ||
+      this._handleConflictError(error) ||
+      this._handleServiceUnavailableError(error)
+    )
+  },
+
+  _handleUnauthorizedError(error) {
+    if (this._flashOnError(error, '401', 'flash.http_codes.unauthorized')) {
+      this.get('session').invalidate()
+      this.transitionTo('login')
+      return true
+    }
+
+    return false
   },
 
   _handleConflictError(error) {
@@ -30,6 +46,7 @@ export default Ember.Mixin.create({
       this.get('flashMessages').error(this.get('i18n').t(messageKey))
       return true
     }
+
     return false
   },
 
