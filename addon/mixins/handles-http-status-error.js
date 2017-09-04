@@ -51,7 +51,7 @@ export default Ember.Mixin.create({
   },
 
   _containsStatusCode({ errors }, code) {
-    return errors && errors.find((err) => err.status === code)
+    return errors && Ember.A(errors).find((err) => err.status === code)
   }
 
 })
