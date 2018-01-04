@@ -1,1 +1,1 @@
-export { default } from 'echo-ember-common/components/molecules/diff-values';
+export { default } from 'echo-ember-common/components/molecules/diff-values'

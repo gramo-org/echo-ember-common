@@ -1,1 +1,1 @@
-export { default } from 'echo-ember-common/components/atoms/drilldown-tr';
+export { default } from 'echo-ember-common/components/atoms/drilldown-tr'
