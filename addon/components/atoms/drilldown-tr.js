@@ -34,18 +34,21 @@ export default Ember.Component.extend({
     this.set('isOrphan', !hasParent)
   },
 
-  click(event) {
+  async click(event) {
     if (!this.get('isOpen') && this.get('loadData')) {
       if (this.get('isLoadingData')) { return }
 
       this.set('isLoadingData', true)
 
-      return this.get('loadData')().then((result) => {
+      try {
+        const result = await this.get('loadData')()
         if (result !== false) {
           this.set('hasChild', true)
           return Ember.run.next(this, this._click, event)
         }
-      }).finally(() => this.set('isLoadingData', false))
+      } finally {
+        this.set('isLoadingData', false)
+      }
     }
 
     return this._click(event)
