@@ -1,4 +1,5 @@
 import Ember from 'ember'
+import layout from '../../templates/components/molecules/amount-change'
 
 /**
  * Molecule for representing a numeric value as either
@@ -8,6 +9,7 @@ import Ember from 'ember'
  * Zero is rendered in default text color, which is currently black.
  */
 export default Ember.Component.extend({
+  layout,
   tagName: 'p',
   renderZero: false,
   classNameBindings: ['isPositive:text--plus', 'isNegative:text--minus'],
