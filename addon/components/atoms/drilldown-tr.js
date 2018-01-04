@@ -1,6 +1,8 @@
 import Ember from 'ember'
+import layout from '../../templates/components/atoms/drilldown-tr'
 
 export default Ember.Component.extend({
+  layout,
   tagName: 'tr',
   classNameBindings: ['isOpen:dd-open', 'isClosed:dd-close'],
   isOpen: null,
