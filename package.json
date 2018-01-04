@@ -18,10 +18,11 @@
     "test": "ember try:each"
   },
   "dependencies": {
+    "ember": "^1.0.3",
     "ember-cli-babel": "^6.3.0",
     "ember-cli-htmlbars": "^2.0.3",
-    "ember-moment": "^7.4.1",
-    "ember-cli-moment-shim": "^3.4.0"
+    "ember-cli-moment-shim": "^3.4.0",
+    "ember-moment": "^7.4.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
