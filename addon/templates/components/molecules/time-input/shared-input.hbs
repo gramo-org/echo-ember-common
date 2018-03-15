@@ -1,0 +1,12 @@
+<label class="form__label">
+  {{t translationKey}}
+  <input
+    data-test-time-input-type={{type}}
+    oninput={{action (action changeAction type) value="target.value"}}
+    placeholder="--"
+    value={{value}}
+    type="tel"
+    class="form__input"
+    disabled={{disabled}}
+  >
+</label>
