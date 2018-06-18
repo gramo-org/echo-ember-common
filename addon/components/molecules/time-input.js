@@ -28,7 +28,7 @@ export default Component.extend({
   actions: {
     change(type, value) {
       const parsedValue = parseInt(value, 10)
-      this.set(type, isNaN(parsedValue) ? null : parsedValue)
+      this.set(type, isNaN(parsedValue) ? undefined : parsedValue)
 
       const duration = this.get('seconds') * 1 + this.get('minutes') * 60 + this.get('hours') * 3600
 
