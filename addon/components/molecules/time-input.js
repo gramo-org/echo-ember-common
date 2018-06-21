@@ -20,6 +20,8 @@ export default Component.extend({
   },
 
   didReceiveAttrs() {
+    if (!this.get('value')) return
+
     const [
       hours, minutes, seconds,
     ] = durationAsHms([this.get('value')], { showHours: true })
