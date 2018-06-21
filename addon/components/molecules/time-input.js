@@ -9,13 +9,17 @@ export default Component.extend({
   classNames: 'form__fieldset time-input',
   'data-test-time-input': true,
 
-  hours: 0,
-  minutes: 0,
-  seconds: 0,
+  init(...args) {
+    this._super(...args)
+
+    this.setProperties({
+      hours: '',
+      minutes: '',
+      seconds: '',
+    })
+  },
 
   didReceiveAttrs() {
-    if (!this.get('value')) return
-
     const [
       hours, minutes, seconds,
     ] = durationAsHms([this.get('value')], { showHours: true })
@@ -28,7 +32,7 @@ export default Component.extend({
   actions: {
     change(type, value) {
       const parsedValue = parseInt(value, 10)
-      this.set(type, isNaN(parsedValue) ? undefined : parsedValue)
+      this.set(type, isNaN(parsedValue) ? '' : parsedValue)
 
       const duration = this.get('seconds') * 1 + this.get('minutes') * 60 + this.get('hours') * 3600
 
