@@ -41,6 +41,7 @@ export default Ember.Component.extend({
       if (this.get('isLoadingData')) { return }
 
       this.set('isLoadingData', true)
+      this.toggleProperty('isOpen')
 
       try {
         const result = await this.get('loadData')()
@@ -51,20 +52,21 @@ export default Ember.Component.extend({
       } finally {
         this.set('isLoadingData', false)
       }
+    } else {
+      this.toggleProperty('isOpen')
     }
-
     return this._click(event)
   },
 
   _click(event) {
     const targetIsInput = Ember.$(event.target).is('input, select, button, a')
     const isChildless = !this.get('hasChild')
+
     if (isChildless || targetIsInput) {
       // do not toggle if user focused on an input element and skip elements without children
       return
     }
     const component = this
-    this.toggleProperty('isOpen')
     this.$().nextAll('tr').each(function() {
       const $el = Ember.$(this)
       if ($el.data('level') <= component.get('level')) {
