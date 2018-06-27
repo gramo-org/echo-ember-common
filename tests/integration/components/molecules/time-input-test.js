@@ -17,7 +17,7 @@ test('it sends proper value on change', async function(assert) {
   await fillIn('[data-test-time-input-type="seconds"]', 10)
 
   assert.ok(find('[data-test-time-input]'))
-  assert.ok(this.onChange.lastCall.args[0], 190)
+  assert.equal(this.onChange.lastCall.args[0], 190)
 })
 
 test('it fills value from seconds properly', async function(assert) {
