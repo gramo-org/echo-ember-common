@@ -42,19 +42,19 @@ export default Ember.Component.extend({
 
       this.set('isLoadingData', true)
       this.toggleProperty('isOpen')
-
       try {
         const result = await this.get('loadData')()
-        if (result !== false) {
+        if (result !== false && !this.isDestroyed) {
           this.set('hasChild', true)
           return Ember.run.next(this, this._click, event)
         }
       } finally {
-        this.set('isLoadingData', false)
+        if (!this.isDestroyed) this.set('isLoadingData', false)
       }
     } else {
       this.toggleProperty('isOpen')
     }
+
     return this._click(event)
   },
 
