@@ -37,7 +37,11 @@ export default Ember.Component.extend({
   },
 
   async click(event) {
-    if (this.ignoreClickEvent(event)) return
+    const targetIsInput = Ember.$(event.target).is('input, select, button, a')
+
+    if (targetIsInput) {
+      return
+    }
 
     if (!this.get('isOpen') && this.get('loadData')) {
       if (this.get('isLoadingData')) { return }
@@ -61,7 +65,11 @@ export default Ember.Component.extend({
   },
 
   _click(event) {
-    if (this.ignoreClickEvent(event)) return
+    const isChildless = !this.get('hasChild')
+
+    if (isChildless) {
+      return
+    }
 
     const component = this
 
@@ -80,13 +88,5 @@ export default Ember.Component.extend({
       }
     })
     return true
-  },
-
-  ignoreClickEvent(event) {
-    const targetIsInput = Ember.$(event.target).is('input, select, button, a')
-    const isChildless = !this.get('hasChild')
-
-    // do not toggle if user focused on an input element and skip elements without children
-    return isChildless || targetIsInput
   }
 })
