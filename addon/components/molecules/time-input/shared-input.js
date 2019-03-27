@@ -7,10 +7,9 @@ export default Component.extend({
 
   actions: {
     onlyNumbers() {
-      if (event.which < 48 || event.which > 57)
-      {
-        event.preventDefault()
-      }
+      const ascii0 = 48
+      const ascii9 = 57
+      if (event.which < ascii0 || event.which > ascii9) event.preventDefault()
     }
   }
 })
