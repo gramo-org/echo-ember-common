@@ -14,4 +14,4 @@ module('Unit | Utility | Societies helpers', function() {
     assert.ok(isGramo(gramoSocietyId))
     assert.notOk(isGramo(samiSocietyId))
   })
-});
+})

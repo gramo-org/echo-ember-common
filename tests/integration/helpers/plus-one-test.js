@@ -1,11 +1,11 @@
 
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render, find } from '@ember/test-helpers';
+import { module, test } from 'qunit'
+import { setupRenderingTest } from 'ember-qunit'
+import { render, find } from '@ember/test-helpers'
 import hbs from 'htmlbars-inline-precompile'
 
 module('helper:plus-one', function(hooks) {
-  setupRenderingTest(hooks);
+  setupRenderingTest(hooks)
 
   test('it renders', async function(assert) {
     await render(hbs`{{plus-one 1}}`)
@@ -17,4 +17,4 @@ module('helper:plus-one', function(hooks) {
     await render(hbs`{{plus-one '99'}}`)
     assert.dom('*').hasText('100')
   })
-});
+})

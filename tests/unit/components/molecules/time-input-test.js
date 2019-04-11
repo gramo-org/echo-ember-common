@@ -1,13 +1,13 @@
-import { module, test } from 'qunit';
+import { module, test } from 'qunit'
 /* eslint no-magic-numbers: "off" */
-import { setupTest } from 'ember-qunit';
+import { setupTest } from 'ember-qunit'
 import sinon from 'sinon'
 
 const onChangeSpy = sinon.spy()
 const durationInSeconds = 3735
 
 module('Unit | Component | time input', function(hooks) {
-  setupTest(hooks);
+  setupTest(hooks)
 
   test('on init', function(assert) {
     const component = this.owner.factoryFor('component:molecules/time-input').create({
@@ -73,4 +73,4 @@ module('Unit | Component | time input', function(hooks) {
       'calls action passed to component with proper args: duration in seconds'
     )
   })
-});
+})

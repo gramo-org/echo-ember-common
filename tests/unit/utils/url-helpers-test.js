@@ -22,7 +22,7 @@ module('Unit | Utility | url helpers pathFor', function() {
   test('has no double slashes', function(assert) {
     assert.equal(pathFor('foo/', 'bar'), 'foo/bar')
   })
-});
+})
 
 module('Unit | Utility | url helpers urlFor', function() {
   test('concatinates part with /', function(assert) {
@@ -46,7 +46,7 @@ module('Unit | Utility | url helpers urlFor', function() {
 
     assert.equal(urlFor('/foo/bar/', 'testBackend', backends), 'http://example.com/api/foo/bar')
   })
-});
+})
 
 module('Unit | Utility | url helpers toQueryString', function() {
   test('it returns empty string for empty object', function(assert) {
@@ -60,4 +60,4 @@ module('Unit | Utility | url helpers toQueryString', function() {
   test('it returns correct string for multiple element', function(assert) {
     assert.equal(toQueryString({foo: 'bar', baz: 1}), 'foo=bar&baz=1')
   })
-});
+})

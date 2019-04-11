@@ -1,4 +1,4 @@
-import EmberObject from '@ember/object';
+import EmberObject from '@ember/object'
 import HandlesHttpStatusErrorMixin from 'echo-ember-common/mixins/handles-http-status-error'
 import { module, test } from 'qunit'
 
@@ -98,4 +98,4 @@ module('Unit | Mixin | handles http status error', function() {
       'flash message is translated'
     )
   })
-});
+})

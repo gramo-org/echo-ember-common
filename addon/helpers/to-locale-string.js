@@ -1,5 +1,5 @@
 import { helper as buildHelper } from '@ember/component/helper';
-import { merge } from '@ember/polyfills';
+import { assign } from '@ember/polyfills';
 import moment from 'moment'
 
 /**
@@ -12,11 +12,12 @@ import moment from 'moment'
  * => "kr 3,15"
  *
  */
+
 /* eslint-disable no-magic-numbers */
 export function toLocaleString([number, ..._rest], options) {
   const float = parseFloat(number)
   if (!isNaN(float)) {
-    return float.toLocaleString(moment.locale(), merge({minimumFractionDigits: 2}, options));
+    return float.toLocaleString(moment.locale(), assign({ minimumFractionDigits: 2 }, options));
   }
 }
 

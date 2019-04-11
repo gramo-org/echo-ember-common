@@ -28,4 +28,4 @@ module('Unit | Helpers | duration-as-hms', function() {
   test('renders hours when asked not to if given time is more than an hour', function(assert) {
     assert.equal(durationAsHms([secInOneHour], {showHours: false}), '01:00:00')
   })
-});
+})

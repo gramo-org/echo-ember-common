@@ -1,10 +1,10 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { module, test } from 'qunit'
+import { setupRenderingTest } from 'ember-qunit'
+import { render } from '@ember/test-helpers'
 import hbs from 'htmlbars-inline-precompile'
 
 module('Integration | Component | atoms/drilldown tr', function(hooks) {
-  setupRenderingTest(hooks);
+  setupRenderingTest(hooks)
 
   /* eslint-disable no-magic-numbers */
   test('it renders', async function(assert) {
@@ -31,4 +31,4 @@ module('Integration | Component | atoms/drilldown tr', function(hooks) {
     assert.equal(this.$('table tr:visible').length, 5, 'shows last level when clicked')
     assert.ok(this.$('table tr:visible td:contains(lvl3)').length, 'shows last level when clicked')
   })
-});
+})

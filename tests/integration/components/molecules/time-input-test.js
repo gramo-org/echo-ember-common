@@ -1,12 +1,12 @@
-import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
-import '@ember/test-helpers';
+import { module, test } from 'qunit'
+import { setupRenderingTest } from 'ember-qunit'
+import '@ember/test-helpers'
 import hbs from 'htmlbars-inline-precompile'
-import { find, fillIn } from 'ember-native-dom-helpers'
+import { fillIn } from '@ember/test-helpers'
 import sinon from 'sinon'
 
 module('Integration | Component | time input', function(hooks) {
-  setupRenderingTest(hooks);
+  setupRenderingTest(hooks)
 
   test('it sends proper value on change', async function(assert) {
     this.set('onChange', sinon.spy())
@@ -28,4 +28,4 @@ module('Integration | Component | time input', function(hooks) {
     assert.dom('[data-test-time-input-type="minutes"]').hasValue(3)
     assert.dom('[data-test-time-input-type="seconds"]').hasValue(10)
   })
-});
+})

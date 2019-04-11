@@ -8,4 +8,4 @@ module('Unit | Utility | jtw helpers', function() {
 
     assert.deepEqual(payload, {sub: '1234567890', name: 'John Doe'})
   })
-});
+})
