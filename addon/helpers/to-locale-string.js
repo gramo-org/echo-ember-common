@@ -1,4 +1,5 @@
-import Ember from 'ember'
+import { helper as buildHelper } from '@ember/component/helper';
+import { merge } from '@ember/polyfills';
 import moment from 'moment'
 
 /**
@@ -15,8 +16,8 @@ import moment from 'moment'
 export function toLocaleString([number, ..._rest], options) {
   const float = parseFloat(number)
   if (!isNaN(float)) {
-    return float.toLocaleString(moment.locale(), Ember.merge({minimumFractionDigits: 2}, options))
+    return float.toLocaleString(moment.locale(), merge({minimumFractionDigits: 2}, options));
   }
 }
 
-export default Ember.Helper.helper(toLocaleString)
+export default buildHelper(toLocaleString)

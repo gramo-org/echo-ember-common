@@ -1,18 +1,20 @@
 
-import { moduleForComponent, test } from 'ember-qunit'
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile'
 
-moduleForComponent('plus-one', 'helper:plus-one', {
-  integration: true
-})
+module('helper:plus-one', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{plus-one 1}}`)
-  assert.equal(this.$().text().trim(), '2')
+  test('it renders', async function(assert) {
+    await render(hbs`{{plus-one 1}}`)
+    assert.dom('*').hasText('2')
 
-  this.render(hbs`{{plus-one 3}}`)
-  assert.equal(this.$().text().trim(), '4')
+    await render(hbs`{{plus-one 3}}`)
+    assert.dom('*').hasText('4')
 
-  this.render(hbs`{{plus-one '99'}}`)
-  assert.equal(this.$().text().trim(), '100')
-})
+    await render(hbs`{{plus-one '99'}}`)
+    assert.dom('*').hasText('100')
+  })
+});

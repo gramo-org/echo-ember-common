@@ -1,19 +1,20 @@
-import { moduleForComponent, test } from 'ember-qunit'
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile'
 import { toLocaleString } from 'echo-ember-common/helpers/to-locale-string'
 
-/* eslint-disable no-magic-numbers */
-moduleForComponent('molecules/amount-change', 'Integration | Component | molecules/amount change', {
-  integration: true
-})
+module('Integration | Component | molecules/amount change', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{molecules/amount-change new=5 old=10}}`)
-  assert.equal(this.$('p.text--minus').text().trim(), toLocaleString([-5]))
+  test('it renders', async function(assert) {
+    await render(hbs`{{molecules/amount-change new=5 old=10}}`)
+    assert.dom('p.text--minus').hasText(toLocaleString([-5]))
 
-  this.render(hbs`{{molecules/amount-change new=10 old=5}}`)
-  assert.equal(this.$('p').text().trim(), toLocaleString([5]))
+    await render(hbs`{{molecules/amount-change new=10 old=5}}`)
+    assert.dom('p').hasText(toLocaleString([5]))
 
-  this.render(hbs`{{molecules/amount-change new=10 old=10}}`)
-  assert.equal(this.$('p').text().trim(), '')
-})
+    await render(hbs`{{molecules/amount-change new=10 old=10}}`)
+    assert.dom('p').hasText('')
+  })
+});

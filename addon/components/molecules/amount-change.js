@@ -1,4 +1,5 @@
-import Ember from 'ember'
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 import layout from '../../templates/components/molecules/amount-change'
 
 /**
@@ -8,25 +9,25 @@ import layout from '../../templates/components/molecules/amount-change'
  * Zero is not rendered by default, but it can with renderZero=true.
  * Zero is rendered in default text color, which is currently black.
  */
-export default Ember.Component.extend({
+export default Component.extend({
   layout,
   tagName: 'p',
   renderZero: false,
   classNameBindings: ['isPositive:text--plus', 'isNegative:text--minus'],
 
-  renderNumber: Ember.computed('{change,renderZero}', function() {
+  renderNumber: computed('{change,renderZero}', function() {
     return this.get('renderZero') || this.get('change') !== 0
   }),
 
-  change: Ember.computed('{new,old}', function() {
+  change: computed('{new,old}', function() {
     return this.get('new') - this.get('old')
   }),
 
-  isPositive: Ember.computed('change', function() {
+  isPositive: computed('change', function() {
     return this.get('change') > 0
   }),
 
-  isNegative: Ember.computed('change', function() {
+  isNegative: computed('change', function() {
     return this.get('change') < 0
   })
 })

@@ -1,4 +1,5 @@
-import Ember from 'ember'
+import { helper as buildHelper } from '@ember/component/helper';
+import { isBlank } from '@ember/utils';
 import moment from 'moment'
 
 const defaultPadLength = -2
@@ -25,7 +26,7 @@ function zeroPad(n, padLength = defaultPadLength) {
  * @return {String}             hh:mm:ss or mm:ss
  */
 export function durationAsHms(params, options = {}) {
-  if (Ember.isBlank(params[0])) { return null }
+  if (isBlank(params[0])) { return null }
   const seconds = parseInt(params[0], 10)
 
   const mustShowHours = seconds >= secondsInAnHour
@@ -46,4 +47,4 @@ export function durationAsHms(params, options = {}) {
 }
 
 
-export default Ember.Helper.helper(durationAsHms)
+export default buildHelper(durationAsHms)

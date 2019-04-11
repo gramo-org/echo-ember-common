@@ -1,29 +1,31 @@
-import { moduleForComponent, test } from 'ember-qunit'
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile'
 import { find, fillIn } from 'ember-native-dom-helpers'
 import sinon from 'sinon'
 
-moduleForComponent('Integration | Component | time input', {
-  integration: true,
-})
+module('Integration | Component | time input', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it sends proper value on change', async function(assert) {
-  this.set('onChange', sinon.spy())
+  test('it sends proper value on change', async function(assert) {
+    this.set('onChange', sinon.spy())
 
-  await this.render(hbs`{{molecules/time-input onChange=onChange}}`)
+    await this.render(hbs`{{molecules/time-input onChange=onChange}}`)
 
-  await fillIn('[data-test-time-input-type="hours"]', 0)
-  await fillIn('[data-test-time-input-type="minutes"]', 3)
-  await fillIn('[data-test-time-input-type="seconds"]', 10)
+    await fillIn('[data-test-time-input-type="hours"]', 0)
+    await fillIn('[data-test-time-input-type="minutes"]', 3)
+    await fillIn('[data-test-time-input-type="seconds"]', 10)
 
-  assert.ok(find('[data-test-time-input]'))
-  assert.equal(this.onChange.lastCall.args[0], 190)
-})
+    assert.dom('[data-test-time-input]').exists()
+    assert.equal(this.onChange.lastCall.args[0], 190)
+  })
 
-test('it fills value from seconds properly', async function(assert) {
-  await this.render(hbs`{{molecules/time-input value=190}}`)
+  test('it fills value from seconds properly', async function(assert) {
+    await this.render(hbs`{{molecules/time-input value=190}}`)
 
-  assert.equal(find('[data-test-time-input-type="hours"]').value, 0)
-  assert.equal(find('[data-test-time-input-type="minutes"]').value, 3)
-  assert.equal(find('[data-test-time-input-type="seconds"]').value, 10)
-})
+    assert.dom('[data-test-time-input-type="hours"]').hasValue(0)
+    assert.dom('[data-test-time-input-type="minutes"]').hasValue(3)
+    assert.dom('[data-test-time-input-type="seconds"]').hasValue(10)
+  })
+});
