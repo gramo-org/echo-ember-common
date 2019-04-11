@@ -4,7 +4,9 @@ import { module, test } from 'qunit'
 
 module('Unit | Mixin | handles http status error', function() {
   class I18n {
-    t(key) { return `${key} - translated` }
+    t(key) {
+      return `${key} - translated`
+    }
   }
 
   class Session {
@@ -53,7 +55,7 @@ module('Unit | Mixin | handles http status error', function() {
   })
 
   test('does nothing on 500 internal server error', function(assert) {
-    const error = { errors: [{status: '500'}] }
+    const error = { errors: [{ status: '500' }] }
     const subject = createSubject()
 
     assert.equal(subject.handleHttpStatusError(error), true, 'does nothing when no errors')
@@ -61,7 +63,7 @@ module('Unit | Mixin | handles http status error', function() {
   })
 
   test('handles 401 unauthorized error', function(assert) {
-    const error = { errors: [{status: '401'}] }
+    const error = { errors: [{ status: '401' }] }
     const subject = createSubject()
 
     assert.equal(subject.handleHttpStatusError(error), false, 'is handled by mixin')
@@ -76,7 +78,7 @@ module('Unit | Mixin | handles http status error', function() {
   })
 
   test('handles 409 conflict error', function(assert) {
-    const error = { errors: [{status: '409'}] }
+    const error = { errors: [{ status: '409' }] }
     const subject = createSubject()
 
     assert.equal(subject.handleHttpStatusError(error), false, 'is handled by mixin')
@@ -88,7 +90,7 @@ module('Unit | Mixin | handles http status error', function() {
   })
 
   test('handles 503 conflict error', function(assert) {
-    const error = { errors: [{status: '503'}] }
+    const error = { errors: [{ status: '503' }] }
     const subject = createSubject()
 
     assert.equal(subject.handleHttpStatusError(error), false, 'is handled by mixin')
