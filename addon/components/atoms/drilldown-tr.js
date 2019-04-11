@@ -1,7 +1,7 @@
-import $ from 'jquery';
-import { scheduleOnce, next } from '@ember/runloop';
-import { computed } from '@ember/object';
-import Component from '@ember/component';
+import $ from 'jquery'
+import { scheduleOnce, next } from '@ember/runloop'
+import { computed } from '@ember/object'
+import Component from '@ember/component'
 import layout from '../../templates/components/atoms/drilldown-tr'
 
 export default Component.extend({
@@ -55,7 +55,7 @@ export default Component.extend({
         const result = await this.get('loadData')()
         if (result !== false && !this.isDestroyed) {
           this.set('hasChild', true)
-          return next(this, this._click, event);
+          return next(this, this._click, event)
         }
       } finally {
         if (!this.isDestroyed) this.set('isLoadingData', false)

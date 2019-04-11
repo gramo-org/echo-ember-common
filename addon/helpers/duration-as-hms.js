@@ -1,5 +1,5 @@
-import { helper as buildHelper } from '@ember/component/helper';
-import { isBlank } from '@ember/utils';
+import { helper as buildHelper } from '@ember/component/helper'
+import { isBlank } from '@ember/utils'
 import moment from 'moment'
 
 const defaultPadLength = -2

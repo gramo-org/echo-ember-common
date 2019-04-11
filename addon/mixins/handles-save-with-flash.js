@@ -1,6 +1,6 @@
-import { reject } from 'rsvp';
-import { inject as service } from '@ember/service';
-import Mixin from '@ember/object/mixin';
+import { reject } from 'rsvp'
+import { inject as service } from '@ember/service'
+import Mixin from '@ember/object/mixin'
 import HandlesHttpStatusErrorMixin from 'echo-ember-common/mixins/handles-http-status-error'
 
 /**
@@ -33,8 +33,8 @@ export default Mixin.create(HandlesHttpStatusErrorMixin, {
         if (this.handleHttpStatusError(e)) {
           this.get('flashMessages').error(this.get('i18n').t('flash.save.failed'))
         }
-        return reject(e);
+        return reject(e)
       }
-    });
+    })
   }
 })

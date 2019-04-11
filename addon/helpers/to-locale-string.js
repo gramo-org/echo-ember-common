@@ -1,5 +1,5 @@
-import { helper as buildHelper } from '@ember/component/helper';
-import { assign } from '@ember/polyfills';
+import { helper as buildHelper } from '@ember/component/helper'
+import { assign } from '@ember/polyfills'
 import moment from 'moment'
 
 /**
@@ -17,7 +17,7 @@ import moment from 'moment'
 export function toLocaleString([number, ..._rest], options) {
   const float = parseFloat(number)
   if (!isNaN(float)) {
-    return float.toLocaleString(moment.locale(), assign({ minimumFractionDigits: 2 }, options));
+    return float.toLocaleString(moment.locale(), assign({ minimumFractionDigits: 2 }, options))
   }
 }
 

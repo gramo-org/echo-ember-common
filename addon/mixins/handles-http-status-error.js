@@ -1,6 +1,6 @@
-import { A } from '@ember/array';
-import { inject as service } from '@ember/service';
-import Mixin from '@ember/object/mixin';
+import { A } from '@ember/array'
+import { inject as service } from '@ember/service'
+import Mixin from '@ember/object/mixin'
 
 export default Mixin.create({
   i18n: service(),
@@ -53,7 +53,7 @@ export default Mixin.create({
   },
 
   _containsStatusCode({ errors }, code) {
-    return errors && A(errors).find((err) => err.status === code);
+    return errors && A(errors).find((err) => err.status === code)
   }
 
 })

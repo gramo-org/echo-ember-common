@@ -1,4 +1,4 @@
-import { isEmpty } from '@ember/utils';
+import { isEmpty } from '@ember/utils'
 
 /**
  * Returns path for parts
