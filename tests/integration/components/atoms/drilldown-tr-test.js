@@ -47,7 +47,6 @@ module('Integration | Component | atoms/drilldown tr', function(hooks) {
       {{#atoms/drilldown-tr level=2}}<td>lvl2</td>{{/atoms/drilldown-tr}}
       </table>
     `)
-    assert.async()
     assert.equal(
       component.tableRows.filter(row => row.isVisible).length,
       2,
