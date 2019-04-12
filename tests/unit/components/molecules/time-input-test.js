@@ -4,14 +4,12 @@ import { setupTest } from 'ember-qunit'
 import sinon from 'sinon'
 
 const onChangeSpy = sinon.spy()
-const durationInSeconds = 3735
 
 module('Unit | Component | time input', function(hooks) {
   setupTest(hooks)
 
   test('change action (valid value)', function(assert) {
     const component = this.owner.factoryFor('component:molecules/time-input').create({
-      value: durationInSeconds,
       onChange: onChangeSpy,
     })
 
@@ -24,15 +22,14 @@ module('Unit | Component | time input', function(hooks) {
     )
 
     assert.ok(
-      onChangeSpy.calledWith(4215),
+      onChangeSpy.calledWith(600),
       'calls action passed to component with proper args: duration in seconds'
     )
   })
 
   test('change action (invalid value)', function(assert) {
     const component = this.owner.factoryFor('component:molecules/time-input').create({
-      value: durationInSeconds,
-      onChange: onChangeSpy,
+      onChange: onChangeSpy
     })
 
     component.send('change', 'minutes', 'ee')
@@ -44,7 +41,7 @@ module('Unit | Component | time input', function(hooks) {
     )
 
     assert.ok(
-      onChangeSpy.calledWith(3615),
+      onChangeSpy.calledWith(0),
       'calls action passed to component with proper args: duration in seconds'
     )
   })
