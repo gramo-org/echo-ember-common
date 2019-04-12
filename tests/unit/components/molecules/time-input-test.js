@@ -9,31 +9,6 @@ const durationInSeconds = 3735
 module('Unit | Component | time input', function(hooks) {
   setupTest(hooks)
 
-  test('on init', function(assert) {
-    const component = this.owner.factoryFor('component:molecules/time-input').create({
-      value: durationInSeconds,
-      onChange: onChangeSpy,
-    })
-
-    assert.equal(
-      component.get('hours'),
-      1,
-      'has hours property set properly on init'
-    )
-
-    assert.equal(
-      component.get('minutes'),
-      2,
-      'has minutes property set properly on init'
-    )
-
-    assert.equal(
-      component.get('seconds'),
-      15,
-      'has seconds property set properly on init'
-    )
-  })
-
   test('change action (valid value)', function(assert) {
     const component = this.owner.factoryFor('component:molecules/time-input').create({
       value: durationInSeconds,
