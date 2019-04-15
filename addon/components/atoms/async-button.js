@@ -7,7 +7,7 @@ import {
   get
 } from '@ember/object'
 import Component from '@ember/component'
-import layout from '../templates/components/async-button'
+import layout from '../../templates/components/async-button'
 
 const positionalParamsMixin = {
   positionalParams: 'params'
