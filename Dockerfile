@@ -1,4 +1,4 @@
-FROM node:8.4.0
+FROM node:10.15.3
 
 ### DEPENDENCIES ###
 
@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
 # Got some issue with permissions. sudo resolved it. Something like:
 # https://github.com/Medium/phantomjs/issues/707#issuecomment-326380366
 RUN sudo npm install -g phantomjs-prebuilt --unsafe-perm
-RUN npm install -g ember-cli@2.15.0
+RUN npm install -g ember-cli@3.9.0
 
 ### PREPARE ###
 

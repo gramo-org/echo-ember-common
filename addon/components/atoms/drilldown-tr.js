@@ -1,7 +1,10 @@
-import Ember from 'ember'
+import $ from 'jquery'
+import { scheduleOnce, next } from '@ember/runloop'
+import { computed } from '@ember/object'
+import Component from '@ember/component'
 import layout from '../../templates/components/atoms/drilldown-tr'
 
-export default Ember.Component.extend({
+export default Component.extend({
   layout,
   tagName: 'tr',
   classNameBindings: ['isOpen:dd-open', 'isClosed:dd-close'],
@@ -9,7 +12,7 @@ export default Ember.Component.extend({
   isClosed: null,
   attributeBindings: ['level:data-level', 'hidden'],
   level: 1,
-  hidden: Ember.computed('level', 'isOrphan', function() {
+  hidden: computed('level', 'isOrphan', function() {
     if (this.get('level') === 1) {
       return null
     }
@@ -18,8 +21,8 @@ export default Ember.Component.extend({
 
   didRender(...args) {
     this._super(...args)
-    Ember.run.scheduleOnce('afterRender', this, 'setHasChild')
-    Ember.run.scheduleOnce('afterRender', this, 'setIsOrphan')
+    scheduleOnce('afterRender', this, 'setHasChild')
+    scheduleOnce('afterRender', this, 'setIsOrphan')
   },
 
   setHasChild() {
@@ -37,7 +40,7 @@ export default Ember.Component.extend({
   },
 
   async click(event) {
-    const targetIsInput = Ember.$(event.target).is('input, select, button, a')
+    const targetIsInput = $(event.target).is('input, select, button, a')
 
     if (targetIsInput) {
       return
@@ -52,7 +55,7 @@ export default Ember.Component.extend({
         const result = await this.get('loadData')()
         if (result !== false && !this.isDestroyed) {
           this.set('hasChild', true)
-          return Ember.run.next(this, this._click, event)
+          return next(this, this._click, event)
         }
       } finally {
         if (!this.isDestroyed) this.set('isLoadingData', false)
@@ -64,7 +67,7 @@ export default Ember.Component.extend({
     return this._click(event)
   },
 
-  _click(event) {
+  _click() {
     const isChildless = !this.get('hasChild')
 
     if (isChildless) {
@@ -74,7 +77,7 @@ export default Ember.Component.extend({
     const component = this
 
     this.$().nextAll('tr').each(function() {
-      const $el = Ember.$(this)
+      const $el = $(this)
       if ($el.data('level') <= component.get('level')) {
         // break the loop if level is same or higher
         return false

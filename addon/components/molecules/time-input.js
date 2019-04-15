@@ -11,7 +11,6 @@ export default Component.extend({
 
   init(...args) {
     this._super(...args)
-
     this.setProperties({
       hours: '',
       minutes: '',
@@ -36,7 +35,7 @@ export default Component.extend({
       const parsedValue = parseInt(value, 10)
       this.set(type, isNaN(parsedValue) ? 0 : parsedValue)
 
-      const duration = this.get('seconds') * 1 + this.get('minutes') * 60 + this.get('hours') * 3600
+      const duration = this.get('seconds') * 1 + this.get('minutes') * 60 + this.get('hours') * 3600 // eslint-disable-line no-magic-numbers
 
       this.get('onChange')(duration)
     }

@@ -1,4 +1,4 @@
-import Ember from 'ember'
+import { isEmpty } from '@ember/utils'
 
 /**
  * Returns path for parts
@@ -10,7 +10,7 @@ import Ember from 'ember'
 export function pathFor(...parts) {
   const flattenParts = parts.reduce((array, part) => array.concat(part), [])
   const stripSlashAtStartOrEnd = part => part.replace(/(^\/|\/$|)/g, '')
-  const rejectEmpty = part => !Ember.isEmpty(part)
+  const rejectEmpty = part => !isEmpty(part)
 
   return flattenParts
     .filter(rejectEmpty)

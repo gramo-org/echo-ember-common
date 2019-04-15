@@ -1,7 +1,7 @@
-import Ember from 'ember'
+import { helper as buildHelper } from '@ember/component/helper'
 
 export function plusOne(params) {
   return parseInt(params, 10) + 1
 }
 
-export default Ember.Helper.helper(plusOne)
+export default buildHelper(plusOne)
