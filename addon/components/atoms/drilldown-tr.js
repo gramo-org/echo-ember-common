@@ -67,7 +67,7 @@ export default Component.extend({
     return this._click(event)
   },
 
-  _click(event) {
+  _click() {
     const isChildless = !this.get('hasChild')
 
     if (isChildless) {
