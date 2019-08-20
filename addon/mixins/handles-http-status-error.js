@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service'
 import Mixin from '@ember/object/mixin'
 
 export default Mixin.create({
-  i18n: service(),
+  intl: service(),
   flashMessages: service(),
 
   /**
@@ -45,7 +45,7 @@ export default Mixin.create({
 
   _flashOnError(error, code, messageKey) {
     if (this._containsStatusCode(error, code)) {
-      this.get('flashMessages').error(this.get('i18n').t(messageKey))
+      this.get('flashMessages').error(this.get('intl').t(messageKey))
       return true
     }
 

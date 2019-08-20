@@ -18,20 +18,20 @@ import HandlesHttpStatusErrorMixin from 'echo-ember-common/mixins/handles-http-s
  * ds-extended-errors lands.
  */
 export default Mixin.create(HandlesHttpStatusErrorMixin, {
-  i18n: service(),
+  intl: service(),
 
   handleSaveWithFlash(promise) {
     return promise.then(() => {
-      this.get('flashMessages').success(this.get('i18n').t('flash.save.success'))
+      this.get('flashMessages').success(this.get('intl').t('flash.save.success'))
     }).catch((e) => {
       const isValidationError = e.validationErrors || // GraphQL rejection
         (e.message && e.message.match(/invalid/)) // Ember data rejection
 
       if (isValidationError) {
-        this.get('flashMessages').error(this.get('i18n').t('flash.save.invalid'))
+        this.get('flashMessages').error(this.get('intl').t('flash.save.invalid'))
       } else {
         if (this.handleHttpStatusError(e)) {
-          this.get('flashMessages').error(this.get('i18n').t('flash.save.failed'))
+          this.get('flashMessages').error(this.get('intl').t('flash.save.failed'))
         }
         return reject(e)
       }

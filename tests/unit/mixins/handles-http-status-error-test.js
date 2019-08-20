@@ -7,7 +7,7 @@ import { inject as service } from '@ember/service'
 
 module('Unit | Mixin | handles http status error', function(hooks) {
   setupTest(hooks)
-  const I18n = Service.extend({
+  const intl = Service.extend({
     t(key) {
       return `${key} - translated`
     }
@@ -43,7 +43,7 @@ module('Unit | Mixin | handles http status error', function(hooks) {
       session: service()
     })
     this.owner.register('test:subject', HandlesHttpStatusErrorObject)
-    this.owner.register('service:i18n', I18n)
+    this.owner.register('service:intl', intl)
     this.owner.register('service:session', Session)
     this.owner.register('service:flashMessages', FlashMessages)
     this.subject = this.owner.lookup('test:subject')
