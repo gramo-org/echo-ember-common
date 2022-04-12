@@ -1,4 +1,6 @@
-import Ember from 'ember'
+import { reject } from 'rsvp'
+import { inject as service } from '@ember/service'
+import Mixin from '@ember/object/mixin'
 import HandlesHttpStatusErrorMixin from 'echo-ember-common/mixins/handles-http-status-error'
 
 /**
@@ -15,8 +17,8 @@ import HandlesHttpStatusErrorMixin from 'echo-ember-common/mixins/handles-http-s
  * Note that the invalid check can be replaced with proper 422 check when
  * ds-extended-errors lands.
  */
-export default Ember.Mixin.create(HandlesHttpStatusErrorMixin, {
-  i18n: Ember.inject.service(),
+export default Mixin.create(HandlesHttpStatusErrorMixin, {
+  i18n: service(),
 
   handleSaveWithFlash(promise) {
     return promise.then(() => {
@@ -31,7 +33,7 @@ export default Ember.Mixin.create(HandlesHttpStatusErrorMixin, {
         if (this.handleHttpStatusError(e)) {
           this.get('flashMessages').error(this.get('i18n').t('flash.save.failed'))
         }
-        return Ember.RSVP.reject(e)
+        return reject(e)
       }
     })
   }

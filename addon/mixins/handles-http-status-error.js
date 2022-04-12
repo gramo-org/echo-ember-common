@@ -1,8 +1,10 @@
-import Ember from 'ember'
+import { A } from '@ember/array'
+import { inject as service } from '@ember/service'
+import Mixin from '@ember/object/mixin'
 
-export default Ember.Mixin.create({
-  i18n: Ember.inject.service(),
-  flashMessages: Ember.inject.service(),
+export default Mixin.create({
+  i18n: service(),
+  flashMessages: service(),
 
   /**
   * Handles various types of server errors denoted by
@@ -51,7 +53,7 @@ export default Ember.Mixin.create({
   },
 
   _containsStatusCode({ errors }, code) {
-    return errors && Ember.A(errors).find((err) => err.status === code)
+    return errors && A(errors).find((err) => err.status === code)
   }
 
 })
