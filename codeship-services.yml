@@ -1,5 +1,0 @@
-echo_ember_common:
-  build:
-    image: gramoorg/echo-ember-common
-    dockerfile_path: Dockerfile
-  cached: true

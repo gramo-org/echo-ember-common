@@ -1,3 +1,0 @@
-- name: tests
-  service: echo_ember_common
-  command: ember test
